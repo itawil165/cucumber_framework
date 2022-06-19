@@ -34,7 +34,7 @@ public class HeroAppSteps {
     @Then("user should see {string} heading")
     public void userShouldSeeHeading(String headingText) {
         switch (headingText) {
-            case "Add/Remove Element":
+            case "Add/Remove Elements":
                 Assert.assertTrue(heroAppPage.addRemoveHeading.isDisplayed());
                 Assert.assertEquals(headingText, heroAppPage.addRemoveHeading.getText());
                 break;
