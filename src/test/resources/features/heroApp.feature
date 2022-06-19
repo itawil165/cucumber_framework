@@ -1,4 +1,4 @@
-@Regression @HeroApp
+@HeroApp @Regression
 Feature: Hero App Functionality
   Scenario: Validate add/remove element page
     Given user navigates to "http://the-internet.herokuapp.com/"
