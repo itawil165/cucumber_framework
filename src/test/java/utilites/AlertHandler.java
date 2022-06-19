@@ -16,7 +16,7 @@ public class AlertHandler {
         driver.switchTo().alert().sendKeys(key);
     }
 
-    public static String getAlertSText (WebDriver driver){
+    public static String getAlertsText (WebDriver driver){
         return driver.switchTo().alert().getText();
     }
 }

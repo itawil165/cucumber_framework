@@ -9,6 +9,8 @@ import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.NotFoundException;
 import org.openqa.selenium.WebDriver;
 import pages.HeroAppPage;
+import utilites.ActionHandler;
+import utilites.AlertHandler;
 import utilites.Driver;
 import utilites.Waiter;
 
@@ -31,8 +33,18 @@ public class HeroAppSteps {
 
     @Then("user should see {string} heading")
     public void userShouldSeeHeading(String headingText) {
-        Assert.assertTrue(heroAppPage.addRemoveHeading3.isDisplayed());
-        Assert.assertEquals(headingText, heroAppPage.addRemoveHeading3.getText());
+        switch (headingText) {
+            case "Add/Remove Element":
+                Assert.assertTrue(heroAppPage.addRemoveHeading.isDisplayed());
+                Assert.assertEquals(headingText, heroAppPage.addRemoveHeading.getText());
+                break;
+            case "Context Menu":
+                Assert.assertTrue(heroAppPage.contextMenuHeading.isDisplayed());
+                Assert.assertEquals(headingText, heroAppPage.contextMenuHeading.getText());
+                break;
+            default:
+                throw new NotFoundException("The displayed text is not defined properly in the feature file!!!");
+        }
     }
 
     @And("user should see {string} button")
@@ -81,5 +93,37 @@ public class HeroAppSteps {
             default:
                 throw new NotFoundException("The button text is not defined properly in the feature file!!!");
         }
+    }
+
+    @And("user should see {string} text")
+    public void userShouldSeeText(String paragraphText) {
+        switch (paragraphText) {
+            case "Context menu items are custom additions that appear in the right-click menu.":
+                Assert.assertTrue(heroAppPage.contextParagraph1.isDisplayed());
+                Assert.assertEquals(paragraphText, heroAppPage.contextParagraph1.getText());
+                break;
+            case "Right-click in the box below to see one called 'the-internet'. When you click it, it will trigger a JavaScript alert.":
+                Assert.assertTrue(heroAppPage.contextParagraph2.isDisplayed());
+                Assert.assertEquals(paragraphText, heroAppPage.contextParagraph2.getText());
+                break;
+            default:
+                throw new NotFoundException("The displayed text is not defined properly in the feature file!!!");
+        }
+    }
+
+    @And("user should see a rectangle box to right click")
+    public void userShouldSeeARectangleBoxToRightClick() {
+        Assert.assertTrue(heroAppPage.contextBox.isDisplayed());
+    }
+
+    @When("user right clicks on rectangle box")
+    public void userRightClicksOnRectangleBox() {
+        ActionHandler.rightClick(heroAppPage.contextBox);
+    }
+
+    @Then("user should see a popup displaying message {string}")
+    public void userShouldSeeAPopupDisplayingMessage(String alertText) {
+        Assert.assertEquals(alertText, AlertHandler.getAlertsText(driver));
+        AlertHandler.dismissAlert(driver);
     }
 }
