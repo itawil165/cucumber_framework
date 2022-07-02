@@ -1,3 +1,4 @@
+@Login
 Feature: Validate HeroApp Login
 
   Background:
