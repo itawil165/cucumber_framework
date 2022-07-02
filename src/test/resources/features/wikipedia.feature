@@ -17,7 +17,7 @@ Feature: Wiki Search Functionality
       #| Lil Baby         |
       | bob the builder |
       | Jennifer Lopez  |
-      #| Robert downey jr |
+      #| Robert Downey Jr |
       #| Irina Shayk      |
       #| Kobe Bryant      |
       #| Piero Manzoni    |
