@@ -25,16 +25,6 @@ public class GoogleSteps {
         googleSearchPage.searchInputBox.sendKeys(key + Keys.ENTER);
     }
 
-    @Then("user should see {string} in the url")
-    public void userShouldSeeInUrl(String key) {
-        Assert.assertTrue(driver.getCurrentUrl().contains(key));
-    }
-
-    @Then("user should see {string} in the title")
-    public void userShouldSeeInTitle(String key) {
-        Assert.assertTrue(driver.getTitle().contains(key));
-    }
-
     @Then("user should see more than {int} results")
     public void userShouldSeeMoreThanResults(long result) {
         Assert.assertTrue(Long.parseLong(googleSearchPage.resultBar.getText().split(" ")[1].replace(",", "")) > result);

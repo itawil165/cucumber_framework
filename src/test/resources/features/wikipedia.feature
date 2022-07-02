@@ -1,4 +1,4 @@
-@Regression
+@Wiki @Regression
 Feature: Wiki Search Functionality
 
   Scenario Outline: Validate Wiki search
@@ -9,7 +9,7 @@ Feature: Wiki Search Functionality
     And user should see "<key>" in the first heading
     Examples:
       | key             |
-      #| Elon Musk        |
+      | Elon Musk        |
       #| Bill Gates       |
       #| Johnny Depp      |
       #| Post Malone      |
